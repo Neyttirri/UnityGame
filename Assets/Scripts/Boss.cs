@@ -6,21 +6,27 @@ namespace Completed
 {
 public class Boss : MonoBehaviour
 {
-    public GameManager gm;
-    public float speed;
-    public float lineOfSite;
-    public float shootingRange;
-    public GameObject waterBall;
-	public GameObject waterBallOrigin;
-    public float shootRate = 1f;
-    private float nextShootTime;
-    private GameObject player;
+    [SerializeField] private float speed;
+    [SerializeField] private float lineOfSite;
+    [SerializeField] private float shootingRange;
+    [SerializeField] private GameObject waterBall;
+	[SerializeField] private GameObject waterBallOrigin;
+    [SerializeField] private float shootRate = 1f;
+    [SerializeField] private float nextShootTime;
     [SerializeField] private int lifes;
+    [SerializeField] private GameObject healthbar;
+    private GameObject player;
+    private GameManager gm;
+    private Transform bar;
+    private float scaleChange;
+    
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        bar = healthbar.transform.Find("Bar");
+        scaleChange = 1f / lifes;
 
     }
 
@@ -54,15 +60,23 @@ public class Boss : MonoBehaviour
     {
        if (col.gameObject.CompareTag("Projectile"))
         {
-        	lifes--;
+        	ReduceLife();
         	Destroy(col.gameObject);
             GetComponent<SpriteRenderer>().color = Color.gray;
-            if(lifes <= 0) { 
-            	Debug.Log("boss is dead");
-            	gm.RevealNemo();
-                Destroy(gameObject); 
-            }
         } 
+    }
+    
+    private void ReduceLife()
+    {
+    	Vector3 temp = bar.localScale;
+    	temp.x -= scaleChange;
+    	bar.localScale = temp;
+    	if(temp.x <= 0)
+    	{
+    		Debug.Log("boss is dead");
+            gm.RevealNemo();
+            Destroy(gameObject);
+    	}
     }
 }
 }
