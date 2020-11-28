@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3115815920790968862}
   - component: {fileID: 3115815919380863797}
-  - component: {fileID: 3115815920790968861}
+  - component: {fileID: 6625704159687804296}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -52,10 +52,6 @@ MonoBehaviour:
   panelUpgrade: {fileID: 0}
   panelGameOver: {fileID: 0}
   panelLevelCompleted: {fileID: 0}
-  exitReached: 0
-  lostLife: 0
-  chooseShield: 0
-  useSpeed: 0
   healthbarImage: {fileID: 0}
   healthbarImages:
   - {fileID: 21300000, guid: 35d199c5b33e04b64b9d4644d9c7e774, type: 3}
@@ -64,8 +60,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ee5533737a0bd4f05aa6c8e33cacbe46, type: 3}
   - {fileID: 21300000, guid: 928c84854b6a148a1bc993bb12fa476d, type: 3}
   - {fileID: 21300000, guid: 0017729056d7f487182550c7528d1063, type: 3}
-  neededForUpgradeCoins: 1
---- !u!114 &3115815920790968861
+  neededForUpgradeCoins: 10
+  bossLevel: 1
+--- !u!114 &6625704159687804296
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -77,27 +74,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4e2a08d02497ff4d8be470d601e59e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  columns: 15
-  rows: 15
+  columns: 32
+  rows: 32
   foodCount:
-    minimum: 7
-    maximum: 13
-  playerPrefab: {fileID: 8696869040990042473, guid: 85b65c1ac4177e14794b2c2f7a85a2b5,
-    type: 3}
-  exitTile: {fileID: 812039726131869351, guid: caa1ba3c9f472b3449178098921a9590, type: 3}
-  shieldTile: {fileID: 6274448170450725196, guid: 748c2da8716f6a1448ec1eab9d4a537e,
-    type: 3}
-  waterTile: {fileID: 6261557427309798708, guid: f4bf8b2f401823449a9ec21e85a1c27a,
-    type: 3}
-  innerWallTiles:
-  - {fileID: 5857310560292003071, guid: b66cd2b45805d2846b2bffc103e9905f, type: 3}
-  - {fileID: 5857310560292003071, guid: bcce6f12c694ba24b91550adb141bb90, type: 3}
-  - {fileID: 5857310560292003071, guid: 1ea579af95af5f24491c38eac29cb64a, type: 3}
-  foodTiles:
-  - {fileID: 3148011865448655443, guid: f36327fa7615dd841ae8c14e0a449ac4, type: 3}
-  enemyTiles:
-  - {fileID: 2142889590769531993, guid: 4311c4d71eb7bf941b7a376693b6166a, type: 3}
-  outerWallTiles:
-  - {fileID: 5857310560292003071, guid: c0c655611ff6893478f5737c58cc8f7f, type: 3}
-  - {fileID: 5857310560292003071, guid: ca1d5de06bb2890428b4d0d95c4bf90b, type: 3}
-  - {fileID: 5857310560292003071, guid: 40a078dac5a6818468bbe9cdc11a2f6f, type: 3}
+    minimum: 3
+    maximum: 10
+  playerPrefab: {fileID: 0}
+  nemoPrefab: {fileID: 0}
+  bossPrefab: {fileID: 0}
+  exitTile: {fileID: 0}
+  waterTile: {fileID: 0}
+  innerWallTiles: []
+  foodTiles: []
+  enemyTiles: []
+  outerWallTiles: []
+  maxLevels: 0

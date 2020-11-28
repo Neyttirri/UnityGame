@@ -53,7 +53,7 @@ namespace Completed
         private Vector3 startCell = new Vector3(1, 1, 0f);
         private Vector3 currentCell;
         private Vector3 checkCell;
-        
+
         private PlayerController playerController;
 
         // every second cell to cuz for now the walls are the same size as the "corridors", aka to make sure there's place for them 
@@ -331,10 +331,10 @@ namespace Completed
                     Destroy(GameObjects[i]);
             }
         }
-        
+
         public PlayerController GetPlayerController()
         {
-        	return playerController;
+            return playerController;
         }
         
         public void CreateNemo()
