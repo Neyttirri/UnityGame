@@ -50,9 +50,13 @@ MonoBehaviour:
     maximum: 10
   playerPrefab: {fileID: 8696869040990042473, guid: 85b65c1ac4177e14794b2c2f7a85a2b5,
     type: 3}
+  nemoPrefab: {fileID: 6958387339247279279, guid: 7a15c759516a7204da90030086bc5582,
+    type: 3}
   bossPrefab: {fileID: 7086194480044866506, guid: 02a58cba0ed284fe887ebf9d16168756,
     type: 3}
   exitTile: {fileID: 812039726131869351, guid: caa1ba3c9f472b3449178098921a9590, type: 3}
+  particleEffects: {fileID: 9173561966426148840, guid: 0c89b062e102cb348b0ee6c96da9bc11,
+    type: 3}
   waterTile: {fileID: 6261557427309798708, guid: f4bf8b2f401823449a9ec21e85a1c27a,
     type: 3}
   innerWallTiles: []

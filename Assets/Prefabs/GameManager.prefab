@@ -60,7 +60,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ee5533737a0bd4f05aa6c8e33cacbe46, type: 3}
   - {fileID: 21300000, guid: 928c84854b6a148a1bc993bb12fa476d, type: 3}
   - {fileID: 21300000, guid: 0017729056d7f487182550c7528d1063, type: 3}
-  neededForUpgradeCoins: 10
+  neededForUpgradeCoins: 1
   bossLevel: 1
 --- !u!114 &6625704159687804296
 MonoBehaviour:
@@ -79,13 +79,27 @@ MonoBehaviour:
   foodCount:
     minimum: 3
     maximum: 10
-  playerPrefab: {fileID: 0}
-  nemoPrefab: {fileID: 0}
-  bossPrefab: {fileID: 0}
-  exitTile: {fileID: 0}
-  waterTile: {fileID: 0}
-  innerWallTiles: []
-  foodTiles: []
-  enemyTiles: []
-  outerWallTiles: []
+  playerPrefab: {fileID: 8696869040990042473, guid: 85b65c1ac4177e14794b2c2f7a85a2b5,
+    type: 3}
+  nemoPrefab: {fileID: 6958387339247279279, guid: 7a15c759516a7204da90030086bc5582,
+    type: 3}
+  bossPrefab: {fileID: 7086194480044866506, guid: 02a58cba0ed284fe887ebf9d16168756,
+    type: 3}
+  exitTile: {fileID: 812039726131869351, guid: caa1ba3c9f472b3449178098921a9590, type: 3}
+  particleEffects: {fileID: 9173561966426148840, guid: 0c89b062e102cb348b0ee6c96da9bc11,
+    type: 3}
+  waterTile: {fileID: 6261557427309798708, guid: f4bf8b2f401823449a9ec21e85a1c27a,
+    type: 3}
+  innerWallTiles:
+  - {fileID: 5857310560292003071, guid: b66cd2b45805d2846b2bffc103e9905f, type: 3}
+  - {fileID: 5857310560292003071, guid: bcce6f12c694ba24b91550adb141bb90, type: 3}
+  - {fileID: 5857310560292003071, guid: 1ea579af95af5f24491c38eac29cb64a, type: 3}
+  foodTiles:
+  - {fileID: 2773912986314557901, guid: e4217cd2c4d6f9d478a7cb986afa30c8, type: 3}
+  enemyTiles:
+  - {fileID: 2142889590769531993, guid: 4311c4d71eb7bf941b7a376693b6166a, type: 3}
+  outerWallTiles:
+  - {fileID: 5857310560292003071, guid: c0c655611ff6893478f5737c58cc8f7f, type: 3}
+  - {fileID: 5857310560292003071, guid: ca1d5de06bb2890428b4d0d95c4bf90b, type: 3}
+  - {fileID: 5857310560292003071, guid: 40a078dac5a6818468bbe9cdc11a2f6f, type: 3}
   maxLevels: 0

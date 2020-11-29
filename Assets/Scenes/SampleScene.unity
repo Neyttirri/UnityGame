@@ -7549,33 +7549,11 @@ PrefabInstance:
       propertyPath: healthbarImage
       value: 
       objectReference: {fileID: 1781422711}
-    - target: {fileID: 3115815919380863797, guid: eec3a1e47b3814b4898285d545bb09c1,
-        type: 3}
-      propertyPath: neededForUpgradeCoins
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3115815919380863797, guid: eec3a1e47b3814b4898285d545bb09c1,
-        type: 3}
-      propertyPath: bossLevel
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 3115815920790968860, guid: eec3a1e47b3814b4898285d545bb09c1,
         type: 3}
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
-    - target: {fileID: 3115815920790968861, guid: eec3a1e47b3814b4898285d545bb09c1,
-        type: 3}
-      propertyPath: bossPrefab
-      value: 
-      objectReference: {fileID: 7086194480044866506, guid: 02a58cba0ed284fe887ebf9d16168756,
-        type: 3}
-    - target: {fileID: 3115815920790968861, guid: eec3a1e47b3814b4898285d545bb09c1,
-        type: 3}
-      propertyPath: nemoPrefab
-      value: 
-      objectReference: {fileID: 6958387339247279279, guid: 7a15c759516a7204da90030086bc5582,
-        type: 3}
     - target: {fileID: 3115815920790968862, guid: eec3a1e47b3814b4898285d545bb09c1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7633,102 +7611,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6625704159687804296, guid: eec3a1e47b3814b4898285d545bb09c1,
         type: 3}
-      propertyPath: innerWallTiles.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6625704159687804296, guid: eec3a1e47b3814b4898285d545bb09c1,
-        type: 3}
-      propertyPath: foodTiles.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6625704159687804296, guid: eec3a1e47b3814b4898285d545bb09c1,
-        type: 3}
-      propertyPath: enemyTiles.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6625704159687804296, guid: eec3a1e47b3814b4898285d545bb09c1,
-        type: 3}
-      propertyPath: outerWallTiles.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6625704159687804296, guid: eec3a1e47b3814b4898285d545bb09c1,
-        type: 3}
-      propertyPath: innerWallTiles.Array.data[0]
+      propertyPath: particleEffects
       value: 
-      objectReference: {fileID: 5857310560292003071, guid: b66cd2b45805d2846b2bffc103e9905f,
+      objectReference: {fileID: 1797069323613605480, guid: e196bfbaf753b9841b1a26bac901829c,
         type: 3}
-    - target: {fileID: 6625704159687804296, guid: eec3a1e47b3814b4898285d545bb09c1,
-        type: 3}
-      propertyPath: innerWallTiles.Array.data[1]
-      value: 
-      objectReference: {fileID: 5857310560292003071, guid: bcce6f12c694ba24b91550adb141bb90,
-        type: 3}
-    - target: {fileID: 6625704159687804296, guid: eec3a1e47b3814b4898285d545bb09c1,
-        type: 3}
-      propertyPath: innerWallTiles.Array.data[2]
-      value: 
-      objectReference: {fileID: 5857310560292003071, guid: 1ea579af95af5f24491c38eac29cb64a,
-        type: 3}
-    - target: {fileID: 6625704159687804296, guid: eec3a1e47b3814b4898285d545bb09c1,
-        type: 3}
-      propertyPath: foodTiles.Array.data[0]
-      value: 
-      objectReference: {fileID: 2773912986314557901, guid: e4217cd2c4d6f9d478a7cb986afa30c8,
-        type: 3}
-    - target: {fileID: 6625704159687804296, guid: eec3a1e47b3814b4898285d545bb09c1,
-        type: 3}
-      propertyPath: enemyTiles.Array.data[0]
-      value: 
-      objectReference: {fileID: 2142889590769531993, guid: 4311c4d71eb7bf941b7a376693b6166a,
-        type: 3}
-    - target: {fileID: 6625704159687804296, guid: eec3a1e47b3814b4898285d545bb09c1,
-        type: 3}
-      propertyPath: outerWallTiles.Array.data[0]
-      value: 
-      objectReference: {fileID: 5857310560292003071, guid: c0c655611ff6893478f5737c58cc8f7f,
-        type: 3}
-    - target: {fileID: 6625704159687804296, guid: eec3a1e47b3814b4898285d545bb09c1,
-        type: 3}
-      propertyPath: outerWallTiles.Array.data[1]
-      value: 
-      objectReference: {fileID: 5857310560292003071, guid: ca1d5de06bb2890428b4d0d95c4bf90b,
-        type: 3}
-    - target: {fileID: 6625704159687804296, guid: eec3a1e47b3814b4898285d545bb09c1,
-        type: 3}
-      propertyPath: outerWallTiles.Array.data[2]
-      value: 
-      objectReference: {fileID: 5857310560292003071, guid: 40a078dac5a6818468bbe9cdc11a2f6f,
-        type: 3}
-    - target: {fileID: 6625704159687804296, guid: eec3a1e47b3814b4898285d545bb09c1,
-        type: 3}
-      propertyPath: playerPrefab
-      value: 
-      objectReference: {fileID: 8696869040990042473, guid: 85b65c1ac4177e14794b2c2f7a85a2b5,
-        type: 3}
-    - target: {fileID: 6625704159687804296, guid: eec3a1e47b3814b4898285d545bb09c1,
-        type: 3}
-      propertyPath: nemoPrefab
-      value: 
-      objectReference: {fileID: 6958387339247279279, guid: 7a15c759516a7204da90030086bc5582,
-        type: 3}
-    - target: {fileID: 6625704159687804296, guid: eec3a1e47b3814b4898285d545bb09c1,
-        type: 3}
-      propertyPath: bossPrefab
-      value: 
-      objectReference: {fileID: 7086194480044866506, guid: 02a58cba0ed284fe887ebf9d16168756,
-        type: 3}
-    - target: {fileID: 6625704159687804296, guid: eec3a1e47b3814b4898285d545bb09c1,
-        type: 3}
-      propertyPath: exitTile
-      value: 
-      objectReference: {fileID: 812039726131869351, guid: caa1ba3c9f472b3449178098921a9590,
-        type: 3}
-    - target: {fileID: 6625704159687804296, guid: eec3a1e47b3814b4898285d545bb09c1,
-        type: 3}
-      propertyPath: waterTile
-      value: 
-      objectReference: {fileID: 6261557427309798708, guid: f4bf8b2f401823449a9ec21e85a1c27a,
-        type: 3}
-    m_RemovedComponents:
-    - {fileID: 8861104527453341243, guid: eec3a1e47b3814b4898285d545bb09c1, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eec3a1e47b3814b4898285d545bb09c1, type: 3}

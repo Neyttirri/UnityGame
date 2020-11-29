@@ -343,7 +343,7 @@ namespace Completed
         	int randomY = Random.Range(0, columns); 
         	Debug.Log("x and y: " + randomX + " " + randomY); 
         	GameObject nemo = Instantiate(nemoPrefab, new Vector3(randomX, randomY, 0), Quaternion.identity) as GameObject;
-        	nemo.transform.SetParent(boardHolder);
+            nemo.transform.SetParent(boardHolder);
         	Debug.Log("nemo at: " + nemo.transform.position);
         }
     }
