@@ -175,7 +175,7 @@ namespace Completed
             LayoutObjectAtRandom(foodTiles, foodCount.minimum, foodCount.maximum);
             Debug.Log("items placed");
             //Determine number of enemies based on current level number, based on a logarithmic progression
-            int enemyCount = level; // or sth more fancy
+            int enemyCount = level+5; // or sth more fancy
 
             //Instantiate a random number of enemies based on minimum and maximum, at randomized positions.
             LayoutObjectAtRandom(enemyTiles, enemyCount, enemyCount);       // here could be a bug with out of range, check wenn so weit NB!!!!

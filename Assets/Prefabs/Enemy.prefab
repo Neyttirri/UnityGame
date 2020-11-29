@@ -104,6 +104,8 @@ MonoBehaviour:
   attackRange: 0
   coolDown: 0
   countDown: 0
+  particleEffects: {fileID: 1797069323613605480, guid: e196bfbaf753b9841b1a26bac901829c,
+    type: 3}
 --- !u!50 &-6704393464867949676
 Rigidbody2D:
   serializedVersion: 4

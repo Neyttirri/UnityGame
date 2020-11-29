@@ -23,6 +23,7 @@ public class Enemy : MonoBehaviour
         Weak,
         Strong
     };
+
     GameObject player;
     public EnemyState currState = EnemyState.Idle;
     public EnemyType enemyType;
@@ -33,6 +34,7 @@ public class Enemy : MonoBehaviour
     private bool coolDownAttack = false;
     private Vector3 randomDir;
     public int countDown;
+    public GameObject particleEffects;
 
 
     
@@ -150,6 +152,8 @@ public class Enemy : MonoBehaviour
     {
 
         Destroy(gameObject);
+        GameObject VFX = Instantiate(particleEffects, transform.position, transform.rotation);
+        Destroy(VFX, 0.5f);
     }
 
     private IEnumerator CoolDown()

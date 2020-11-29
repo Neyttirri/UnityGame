@@ -87,7 +87,7 @@ namespace Completed
             shieldActive = true;
             shield.SetActive(true);
             UnityEngine.Debug.Log("Shield activated");
-            Invoke("DeactivateShield", 5.0f);
+            Invoke("DeactivateShield", 15.0f);
         }
 
         private void DeactivateShield()
