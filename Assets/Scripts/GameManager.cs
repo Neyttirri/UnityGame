@@ -13,12 +13,14 @@ namespace Completed
 
         public Text coinsText;
         public Text levelText;
+        public Text timerText;
 
         public GameObject panelMenu;
         public GameObject panelPlay;
         public GameObject panelUpgrade;
         public GameObject panelGameOver;
         public GameObject panelLevelCompleted;
+        public GameObject panelVictory;
 
         [SerializeField] private Image healthbarImage;
         [SerializeField] private Sprite[] healthbarImages;
@@ -29,7 +31,7 @@ namespace Completed
         private GameObject pauseGameText;
         
         public static GameManager Instance { get; private set; }
-        public enum State { MENU, INIT, PLAY, LEVELCOMPLETED, LOADLEVEL, UPGRADE, GAMEOVER }
+        public enum State { MENU, INIT, PLAY, LEVELCOMPLETED, LOADLEVEL, UPGRADE, GAMEOVER, VICTORY }
         private readonly int MAX_LEVELS = 6;
     
         private State _state;
@@ -64,6 +66,8 @@ namespace Completed
                 levelText.text = "LEVEL: " + level;
             }
         }
+        
+        private float time = 0;  
 
         public void PlayClicked()
         {
@@ -107,6 +111,7 @@ namespace Completed
         {
             pauseGameText = panelPlay.transform.GetChild(4).gameObject;
             pauseGameText.SetActive(false);
+            time = 0;  
             // Instance = this;
             // SwitchState(State.MENU);
         }
@@ -130,6 +135,8 @@ namespace Completed
                 case State.INIT:
                     break;
                 case State.PLAY:
+                	time += Time.deltaTime;
+                	timerText.text = "TIME: " + (int)(time / 60) + ":" + (int)(time % 60); 
                     if (Input.GetKeyDown(KeyCode.Space))
        				{
             			if(Time.timeScale == 0)
@@ -144,6 +151,8 @@ namespace Completed
             				Debug.Log("Game paused.");
             			}
         			}
+        			
+        			
                     
 // !!!!!------------ CHECKS FOR COINS; UPGRADES; LOST LIFES; REACHED EXIT-> MOVED TO THE METHODS FOR THE COLLISIONS, AKA WHEN THERE IS SUCH A METHOD FROM THE GM IS CALLED-----!!!!!!
 // can find the methods in the end (ActivateUpgrade(), SetExitActive() -> called from Coin script; LostLife() -> called from Player script; WhenExitReached_Update() -> called from Exit script                    
@@ -157,9 +166,11 @@ namespace Completed
                     break;
                 case State.GAMEOVER:
                     break;
+                case State.VICTORY:
+                    break;    
             }
         }
-
+        
         public void SwitchState(State newState, float delay = 0)
         {
             StartCoroutine(SwitchDelay(newState, delay));
@@ -187,12 +198,14 @@ namespace Completed
                     Coin = 0;
                     Lifes = 5;
                     Level = 1;
+                    timerText.text = "TIME: 0:0";
                     Cursor.visible = false;
                     panelPlay.SetActive(true);
                     healthbarImage.sprite = healthbarImages[Lifes] as Sprite;	// überflüssig?
                     SwitchState(State.LOADLEVEL);
                     break;
                 case State.PLAY:
+                	time += Time.deltaTime;
                 	ResumeGame();
                     panelPlay.SetActive(true);
 					break;
@@ -218,9 +231,14 @@ namespace Completed
                     // drop all the updates
                     Coin = 0;
                     Lifes = 6;
+                    time = 0;
                     Cursor.visible = true;
                     panelGameOver.SetActive(true);
                     break;
+                case State.VICTORY:
+                	panelVictory.SetActive(true);
+                	Cursor.visible = true;
+                    break;   
             }
         }
 
@@ -252,6 +270,9 @@ namespace Completed
                 case State.GAMEOVER:
                     panelGameOver.SetActive(false);
                     break;
+                case State.VICTORY:
+                	panelVictory.SetActive(false);
+                    break;    
             }
         }
 
@@ -303,9 +324,7 @@ namespace Completed
         
         public void NemoWasFound()
         {
-        	// maybe add some fancy shit so it's better outcome than when we lose
-        	SwitchState(State.GAMEOVER);
-        	Debug.Log("told BM to instantiate Nemo");
+        	SwitchState(State.VICTORY);
         }
         
         private void PauseGame()
