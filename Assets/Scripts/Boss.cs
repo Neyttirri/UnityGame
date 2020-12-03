@@ -19,13 +19,20 @@ public class Boss : MonoBehaviour
     private GameManager gm;
     private Transform bar;
     private float scaleChange;
+    private GameObject health;
+    private float barWidth;
+    private float barHeight;
+    
     
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-        bar = healthbar.transform.Find("Bar");
+        health = Instantiate(healthbar);
+        bar = health.transform.Find("Bar");
+        barWidth = ((RectTransform)health.transform).rect.width;
+        barWidth = ((RectTransform)health.transform).rect.height;
         scaleChange = 1f / lifes;
 
     }
@@ -33,6 +40,12 @@ public class Boss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    	// Vector3 topRight = new Vector3(Camera.main.pixelWidth, Camera.main.pixelHeight, 0f);
+ 		// health.transform.position = new Vector2(Camera.main.ScreenToWorldPoint(topRight).x, Camera.main.ScreenToWorldPoint(topRight).y);
+ 		
+ 		
+ 		Debug.Log("position of bar: " + health.transform.position);
+ 		Debug.Log("position of nemo: " + player.transform.position);
         float distanceFromPlayer = Vector2.Distance(player.transform.position, this.transform.position);
         if (distanceFromPlayer <= lineOfSite && distanceFromPlayer >= shootingRange)
         {
@@ -43,7 +56,11 @@ public class Boss : MonoBehaviour
             ShootWaterBall();
         } 
     }
-
+	
+	private void FixedUpdate()
+	{
+		health. transform.position = new Vector3(Camera.main.ViewportToWorldPoint(new Vector3(1,1,0)).x - 1.9f, Camera.main.ViewportToWorldPoint(new Vector3(1,1,0)).y - 0.5f, 0);
+	}
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
@@ -75,6 +92,7 @@ public class Boss : MonoBehaviour
     	{
     		Debug.Log("boss is dead");
             gm.RevealNemo();
+            Destroy(health);
             Destroy(gameObject);
     	}
     }
