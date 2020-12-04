@@ -14,6 +14,8 @@ namespace Completed
         public Text coinsText;
         public Text levelText;
         public Text timerText;
+		public Text bestTimeText;
+		public Text currentTimeText;
 
         public GameObject panelMenu;
         public GameObject panelPlay;
@@ -29,6 +31,7 @@ namespace Completed
         public int bossLevel;
         
         private GameObject pauseGameText;
+		private GameObject newHighscoreText;
         
         public static GameManager Instance { get; private set; }
         public enum State { MENU, INIT, PLAY, LEVELCOMPLETED, LOADLEVEL, UPGRADE, GAMEOVER, VICTORY }
@@ -36,7 +39,8 @@ namespace Completed
     
         private State _state;
         private bool _isSwitchingState;
-
+		private float time = 0; 
+		private float bestTime = 0;
 
         private int _coins;
         public int Coin
@@ -67,7 +71,7 @@ namespace Completed
             }
         }
         
-        private float time = 0;  
+         
 
         public void PlayClicked()
         {
@@ -111,6 +115,8 @@ namespace Completed
         {
             pauseGameText = panelPlay.transform.GetChild(4).gameObject;
             pauseGameText.SetActive(false);
+			newHighscoreText = panelVictory.transform.GetChild(0).gameObject.transform.GetChild(4).gameObject;
+			newHighscoreText.SetActive(false);
             time = 0;  
             // Instance = this;
             // SwitchState(State.MENU);
@@ -237,6 +243,10 @@ namespace Completed
                     break;
                 case State.VICTORY:
                 	panelVictory.SetActive(true);
+					bestTimeText.text = "Best time: " + (int)(bestTime / 60) + ":" + (int)(bestTime % 60); 
+					currentTimeText.text = "TIME: " + (int)(time / 60) + ":" + (int)(time % 60); 
+					if( time > bestTime)
+						newHighscoreText.SetActive(true);
                 	Cursor.visible = true;
                     break;   
             }
