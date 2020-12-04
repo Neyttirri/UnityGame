@@ -43,9 +43,6 @@ public class Boss : MonoBehaviour
     	// Vector3 topRight = new Vector3(Camera.main.pixelWidth, Camera.main.pixelHeight, 0f);
  		// health.transform.position = new Vector2(Camera.main.ScreenToWorldPoint(topRight).x, Camera.main.ScreenToWorldPoint(topRight).y);
  		
- 		
- 		Debug.Log("position of bar: " + health.transform.position);
- 		Debug.Log("position of nemo: " + player.transform.position);
         float distanceFromPlayer = Vector2.Distance(player.transform.position, this.transform.position);
         if (distanceFromPlayer <= lineOfSite && distanceFromPlayer >= shootingRange)
         {

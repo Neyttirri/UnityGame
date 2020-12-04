@@ -209,11 +209,11 @@ namespace Completed
                     Cursor.visible = false;
                     panelPlay.SetActive(true);
                     healthbarImage.sprite = healthbarImages[Lifes] as Sprite;	// überflüssig?
+                	ResumeGame();
                     SwitchState(State.LOADLEVEL);
                     break;
                 case State.PLAY:
                 	time += Time.deltaTime;
-                	ResumeGame();
                     panelPlay.SetActive(true);
 					break;
                 case State.LEVELCOMPLETED:

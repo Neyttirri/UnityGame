@@ -55,6 +55,7 @@ namespace Completed
         private Vector3 checkCell;
 
         private PlayerController playerController;
+        private GameObject playerObject;
 
         // every second cell to cuz for now the walls are the same size as the "corridors", aka to make sure there's place for them 
         // another option would be to make different 2D objects with walls (BoxCollider only on the surface of the wall) etc... 
@@ -170,7 +171,12 @@ namespace Completed
             LayoutWaterTiles();
             LayoutExitTile(level);
             LayoutInnerWalls();
-            playerController = Instantiate(playerPrefab).GetComponent<PlayerController>();
+            if (playerObject == null){
+            	playerObject = Instantiate(playerPrefab);
+            	playerController = playerObject.GetComponent<PlayerController>();
+            } else {
+            	playerObject.transform.position = new Vector3(0, 0, 0);
+            }
             //Instantiate a random number of food tiles based on minimum and maximum, at randomized positions.
             LayoutObjectAtRandom(foodTiles, foodCount.minimum, foodCount.maximum);
             Debug.Log("items placed");
@@ -199,7 +205,12 @@ namespace Completed
                     water.transform.SetParent(boardHolder);
                 }
             }
-            Instantiate(playerPrefab);
+            if (playerObject == null){
+            	playerObject = Instantiate(playerPrefab);
+            	playerController = playerObject.GetComponent<PlayerController>();
+            } else {
+            	playerObject.transform.position = new Vector3(0, 0, 0);
+            }
             GameObject boss = Instantiate(bossPrefab, RandomPosition(), Quaternion.identity);
             boss.transform.SetParent(boardHolder);
         }
@@ -316,18 +327,7 @@ namespace Completed
 
             for (int i = 0; i < GameObjects.Length; i++)
             {
-                if (GameObjects[i].tag == "Wall" || GameObjects[i].tag == "Water" || GameObjects[i].tag == "Coin" || GameObjects[i].tag == "Player" || GameObjects[i].tag == "Exit")
-                    Destroy(GameObjects[i]);
-            }
-        }
-
-        public void ClearScene()
-        {
-            GameObject[] GameObjects = (FindObjectsOfType<GameObject>() as GameObject[]);
-
-            for (int i = 0; i < GameObjects.Length; i++)
-            {
-                if (GameObjects[i].tag == "Wall" || GameObjects[i].tag == "Water" || GameObjects[i].tag == "Coin" || GameObjects[i].tag == "Player" || GameObjects[i].tag == "Exit")
+                if (GameObjects[i].tag == "Wall" || GameObjects[i].tag == "Water" || GameObjects[i].tag == "Coin" || GameObjects[i].tag == "Exit")
                     Destroy(GameObjects[i]);
             }
         }
