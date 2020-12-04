@@ -327,7 +327,7 @@ namespace Completed
 
             for (int i = 0; i < GameObjects.Length; i++)
             {
-                if (GameObjects[i].tag == "Wall" || GameObjects[i].tag == "Water" || GameObjects[i].tag == "Coin" || GameObjects[i].tag == "Exit" || GameObjects[i].tag == "Nemo")
+                if (GameObjects[i].tag == "Wall" || GameObjects[i].tag == "Water" || GameObjects[i].tag == "Coin" || GameObjects[i].tag == "Exit")
                     Destroy(GameObjects[i]);
             }
         }
