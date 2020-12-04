@@ -8191,6 +8191,11 @@ PrefabInstance:
       propertyPath: currentTimeText
       value: 
       objectReference: {fileID: 1900338898}
+    - target: {fileID: 3115815919380863797, guid: eec3a1e47b3814b4898285d545bb09c1,
+        type: 3}
+      propertyPath: bossLevel
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3115815920790968860, guid: eec3a1e47b3814b4898285d545bb09c1,
         type: 3}
       propertyPath: m_Name
