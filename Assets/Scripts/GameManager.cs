@@ -39,7 +39,8 @@ namespace Completed
     
         private State _state;
         private bool _isSwitchingState;
-		private float time = 0; 
+		private float time;
+		private float startTime; 
 		private float bestTime = 0;
 
         private int _coins;
@@ -117,7 +118,6 @@ namespace Completed
             pauseGameText.SetActive(false);
 			newHighscoreText = panelVictory.transform.GetChild(0).gameObject.transform.GetChild(4).gameObject;
 			newHighscoreText.SetActive(false);
-            time = 0;  
             // Instance = this;
             // SwitchState(State.MENU);
         }
@@ -141,7 +141,7 @@ namespace Completed
                 case State.INIT:
                     break;
                 case State.PLAY:
-                	time += Time.deltaTime;
+                	time = Time.time - startTime;
                 	timerText.text = "TIME: " + (int)(time / 60) + ":" + (int)(time % 60); 
                     if (Input.GetKeyDown(KeyCode.Space))
        				{
@@ -204,6 +204,7 @@ namespace Completed
                     Coin = 0;
                     Lifes = 5;
                     Level = 1;
+                    startTime = Time.time; 
                     timerText.text = "TIME: 0:0";
                     Cursor.visible = false;
                     panelPlay.SetActive(true);
