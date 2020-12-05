@@ -1432,7 +1432,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 85.5}
-  m_SizeDelta: {x: -1360, y: 61}
+  m_SizeDelta: {x: -1360, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1054992023
 MonoBehaviour:
@@ -1501,7 +1501,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9811321, g: 0.9302243, b: 0.9302243, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
