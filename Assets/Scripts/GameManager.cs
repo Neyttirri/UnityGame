@@ -221,8 +221,7 @@ namespace Completed
                     Coin = 0;
                     Lifes = 6;
                     elapsedTime = 0;
-					boardScript.DropAllPlayerUpgrades();		// make sure when starting the game (also next times), all the upgrades for the player are gone
-                    Cursor.visible = true;
+					Cursor.visible = true;
                     panelGameOver.SetActive(true);
                     break;
                 case State.VICTORY:
@@ -230,10 +229,11 @@ namespace Completed
 					bestTimeText.text = "Best time: " + (int)(bestTime / 60) + ":" + (int)(bestTime % 60); 
 					currentTimeText.text = "TIME: " + (int)(elapsedTime / 60) + ":" + (int)(elapsedTime % 60); 
 					if( elapsedTime > bestTime)
+					{
 						newHighscoreText.SetActive(true);
+					}
                 	Cursor.visible = true;
-					boardScript.DropAllPlayerUpgrades();		// make sure when starting the game (also next times), all the upgrades for the player are gone
-                    break;   
+					break;   
             }
         }
 
@@ -261,10 +261,19 @@ namespace Completed
 					ResumeGame();   
                     break;
                 case State.GAMEOVER:
+                	boardScript.DropAllPlayerUpgrades();		// make sure when starting the game (also next times), all the upgrades for the player are gone
+                	Debug.Log("Upgrades deactivated after game over");
                     panelGameOver.SetActive(false);
                     break;
                 case State.VICTORY:
                 	panelVictory.SetActive(false);
+                	boardScript.DropAllPlayerUpgrades();		// make sure when starting the game (also next times), all the upgrades for the player are gone
+                	if( elapsedTime > bestTime)
+					{
+						Debug.Log("clearing up time and highscore..");
+						bestTime = elapsedTime;
+						newHighscoreText.SetActive(false);
+					}
                     break;    
             }
         }
