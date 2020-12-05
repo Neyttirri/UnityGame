@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9098293195666885929}
   - component: {fileID: 8733933769098347669}
   - component: {fileID: -8726703276123129576}
+  - component: {fileID: 6975956686095022460}
   m_Layer: 0
   m_Name: Shield
   m_TagString: Untagged
@@ -73,7 +74,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: -3208461720741387023, guid: 57c8e8de9d440d744ba336ceeaf4352a,
     type: 3}
-  m_Color: {r: 0.16037738, g: 1, b: 0.7284386, a: 0.9137255}
+  m_Color: {r: 0.4765931, g: 0.990566, b: 0.8248458, a: 0.34509805}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -96,3 +97,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toFollow: {fileID: 0}
+--- !u!95 &6975956686095022460
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6274448170450725196}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6b1c7d7c860035d4e8aca06069a518f6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
