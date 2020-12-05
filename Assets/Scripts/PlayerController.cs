@@ -62,9 +62,13 @@ namespace Completed
 
         private void OnCollisionEnter2D(Collision2D col)
         {
-            if (col.gameObject.CompareTag("Enemy") || col.gameObject.CompareTag("Boss") && !shieldActive)
+            if (col.gameObject.CompareTag("Enemy") && !shieldActive)
             {
-
+                StartCoroutine(Attacked());
+                gm.LostLife();
+            }
+            if (col.gameObject.CompareTag("Boss") && !shieldActive)
+            {
                 StartCoroutine(Attacked());
                 gm.LostLife();
             }

@@ -27,7 +27,7 @@ namespace Completed
         [SerializeField] private GameObject playerPrefab;
         [SerializeField] private GameObject nemoPrefab;
         [SerializeField] private GameObject bossPrefab;
-        [SerializeField] private GameObject exitTile;
+        [SerializeField] private GameObject exitPrefab;
         [SerializeField] private GameObject waterTile;                  // water prefabs
         [SerializeField] private GameObject[] innerWallTiles;           // Array of wall prefabs
         [SerializeField] private GameObject[] coinTiles;                // Array of food prefabs
@@ -47,10 +47,12 @@ namespace Completed
 
         private PlayerController playerController;
         private GameObject playerObject;								// Gonna re-use the first instantiated player prefab
-        private GameObject bossObject;									// And the boss prefab, because we were short on time for a more beautiful solution
+        private GameObject bossObject;
+        private GameObject exitTile;
+        // And the boss prefab, because we were short on time for a more beautiful solution
 
         // helper array to calculate the next four possible cells to visit from the current cell 
-		// every second cell (in steps of 2) because the walls are the same size as the "corridors", aka to make sure there's place for them - for water and wall tiles 
+        // every second cell (in steps of 2) because the walls are the same size as the "corridors", aka to make sure there's place for them - for water and wall tiles 
         private Vector3[] neighbourPositions = new Vector3[] { new Vector3(-2, 0, 0), new Vector3(2, 0, 0), new Vector3(0, 2, 0), new Vector3(0, -2, 0) };
         private int maxLevels;											// to determine which level is the last one - there will be the boss
 		
@@ -311,7 +313,8 @@ namespace Completed
         private void LayoutExitTile()
         {
             Debug.Log("exit at: " + visited[visited.Count - 1]);
-            exitTile = Instantiate(exitTile, visited[visited.Count - 1], Quaternion.identity);
+
+            exitTile = Instantiate(exitPrefab, visited[visited.Count - 1], Quaternion.identity);
             exitTile.transform.SetParent(boardHolder);
             exitTile.SetActive(false);  // will be active only when a condition is fulfilled (all coins were collected)
         }
