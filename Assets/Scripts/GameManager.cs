@@ -16,7 +16,8 @@ namespace Completed
         public Text timerText;
 		public Text bestTimeText;
 		public Text currentTimeText;
-		
+        public Text textAnnounceText;
+
         public GameObject panelMenu;
         public GameObject panelPlay;
         public GameObject panelUpgrade;
@@ -334,12 +335,22 @@ namespace Completed
         {
 			boardScript.CreateNemo();
         }
-        
+
         public void NemoWasFound()
         {
-        	SwitchState(State.VICTORY);
+            SwitchState(State.VICTORY);
         }
-        
+        public void ShowExitAnnounce()
+        {
+                StartCoroutine(ExitAnnounce());
+        }
+        private IEnumerator ExitAnnounce()
+        {
+            textAnnounceText.gameObject.SetActive(true);
+            yield return new WaitForSeconds(1f);
+            textAnnounceText.gameObject.SetActive(false);
+
+        }
         private void PauseGame()
         {
             Time.timeScale = 0;

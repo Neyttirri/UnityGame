@@ -32,7 +32,8 @@ public class CoinScript : MonoBehaviour
        	 	if(coins.Length == 1)
        	 	{
        	 		gm.SetExitActive();
-       	 	}
+                gm.ShowExitAnnounce();
+            }
        	 	
        	 	if(gm.Coin == coinsForUpgrade)
        	 	{

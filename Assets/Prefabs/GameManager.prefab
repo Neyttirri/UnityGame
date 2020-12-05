@@ -50,6 +50,7 @@ MonoBehaviour:
   timerText: {fileID: 0}
   bestTimeText: {fileID: 0}
   currentTimeText: {fileID: 0}
+  textAnnounceText: {fileID: 0}
   panelMenu: {fileID: 0}
   panelPlay: {fileID: 0}
   panelUpgrade: {fileID: 0}
@@ -64,7 +65,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ee5533737a0bd4f05aa6c8e33cacbe46, type: 3}
   - {fileID: 21300000, guid: 928c84854b6a148a1bc993bb12fa476d, type: 3}
   - {fileID: 21300000, guid: 0017729056d7f487182550c7528d1063, type: 3}
-  neededForUpgradeCoins: 7
+  neededForUpgradeCoins: 2
   bossLevel: 2
 --- !u!114 &6625704159687804296
 MonoBehaviour:
