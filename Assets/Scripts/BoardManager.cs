@@ -88,14 +88,17 @@ namespace Completed
 						water.transform.SetParent(boardHolder);
 					}
 				}
-				if (bossObject == null)
-            	{
-                	bossObject = Instantiate(bossPrefab, RandomPosition(),Quaternion.identity);
-            	} else {
-                	playerObject.transform.position = RandomPosition();
-            	}
-					Debug.Log("Boss scene set at level: " + level);
-			} else {
+                if (bossObject == null)
+                {
+                    bossObject = Instantiate(bossPrefab, RandomPosition(), Quaternion.identity);
+                }
+                else
+                {
+                    playerObject.transform.position = RandomPosition();
+                }
+
+                Debug.Log("Boss scene set at level: " + level);
+            } else {
 				LayoutWaterTiles();
 				LayoutExitTile();
 				LayoutInnerWalls();
@@ -110,37 +113,7 @@ namespace Completed
 			}
 	    }
 
-        public void SetupBossScene()
-        {
-            DestroyAllGameObjects();
-            // Creates the outer walls and floor.
-            BoardSetup();
-            // Reset the grid positions, visited and unvisited lists
-            InitialiseList();
-            GenerateMaze(rows, columns);
-            // Layout water tiles
-            for (int x = 0; x < columns; x++)
-            {
-                for (int y = 0; y < rows; y++)
-                {
-                    GameObject water = Instantiate(waterTile, new Vector3(x, y, 0), Quaternion.identity);
-                    water.transform.SetParent(boardHolder);
-                }
-            }
-            if (playerObject == null){
-            	playerObject = Instantiate(playerPrefab);
-            	playerController = playerObject.GetComponent<PlayerController>();
-            } else {
-            	playerObject.transform.position = new Vector3(0, 0, 0);
-            }
-            if (bossObject == null)
-            {
-                bossObject = Instantiate(bossPrefab, RandomPosition(),Quaternion.identity);
-            } else {
-                playerObject.transform.position = RandomPosition();
-            }
-        }
-		
+   
 		public void SetMaxLevels(int val)
 		{
 			maxLevels = val;
@@ -360,7 +333,7 @@ namespace Completed
 
             for (int i = 0; i < GameObjects.Length; i++)
             {
-                if (GameObjects[i].tag == "Wall" || GameObjects[i].tag == "Water" || GameObjects[i].tag == "Coin" || GameObjects[i].tag == "Nemo" || GameObjects[i].tag == "Enemy" || GameObjects[i].tag == "Exit"  )
+                if (GameObjects[i].tag == "Wall" || GameObjects[i].tag == "Water" || GameObjects[i].tag == "Coin" || GameObjects[i].tag == "Nemo" || GameObjects[i].tag == "Enemy"|| GameObjects[i].tag == "Exit"  )
                     Destroy(GameObjects[i]);
             }
         }
