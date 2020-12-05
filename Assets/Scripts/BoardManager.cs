@@ -56,6 +56,7 @@ namespace Completed
 
         private PlayerController playerController;
         private GameObject playerObject;
+        private GameObject bossObject;
 
         // every second cell to cuz for now the walls are the same size as the "corridors", aka to make sure there's place for them 
         // another option would be to make different 2D objects with walls (BoxCollider only on the surface of the wall) etc... 
@@ -211,8 +212,15 @@ namespace Completed
             } else {
             	playerObject.transform.position = new Vector3(0, 0, 0);
             }
-            GameObject boss = Instantiate(bossPrefab, RandomPosition(), Quaternion.identity);
-            boss.transform.SetParent(boardHolder);
+            if (bossObject == null)
+            {
+                bossObject = Instantiate(bossPrefab, RandomPosition(),Quaternion.identity);
+            }
+            else
+            {
+                playerObject.transform.position = RandomPosition();
+            }
+           
         }
 
         private void GenerateMaze(int rows, int cols)
