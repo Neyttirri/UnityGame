@@ -9,7 +9,7 @@ namespace Completed
     {
 
         public GameManager gm;
-        public float speed;
+        public float speedOriginal;
         private Rigidbody2D _rigidBody;
         [SerializeField] private GameObject shield;
 		[SerializeField] private GameObject bulletPrefab;
@@ -17,6 +17,7 @@ namespace Completed
         private float horizontal;
         private float vertical;
         private bool shieldActive = false;
+		private float speedUpgraded;
 
 
         void Start()
@@ -26,6 +27,7 @@ namespace Completed
             shield.SetActive(false);
             _rigidBody = GetComponent<Rigidbody2D>();
             Vector3 pos = transform.position;
+			speedUpgraded = speedOriginal;
             // UnityEngine.Debug.Log("player: " + pos);
         }
 
@@ -55,10 +57,10 @@ namespace Completed
         {
             // if( horizontal != 0 && vertical !=0) // check for diagonal movement?
             // velocity is both the speed and the direction 
-            _rigidBody.velocity = new Vector2(horizontal * speed, vertical * speed);
+            _rigidBody.velocity = new Vector2(horizontal * speedUpgraded, vertical * speedUpgraded);
         }
 
-        void OnCollisionEnter2D(Collision2D col)
+        private void OnCollisionEnter2D(Collision2D col)
         {
             if (col.gameObject.CompareTag("Enemy") && !shieldActive)
             {
@@ -73,7 +75,8 @@ namespace Completed
             }
 
         }
-        IEnumerator Attacked()
+        
+		private IEnumerator Attacked()
         {
 
             GetComponent<SpriteRenderer>().color = Color.red;
@@ -82,24 +85,11 @@ namespace Completed
 
         }
 
-        public void useShield()
-        {
-            shieldActive = true;
-            shield.SetActive(true);
-            UnityEngine.Debug.Log("Shield activated");
-            Invoke("DeactivateShield", 15.0f);
-        }
-
         private void DeactivateShield()
         {
             shieldActive = false;
             shield.SetActive(false);
             UnityEngine.Debug.Log("Shield deactivated");
-        }
-        
-        public void useSpeed(float speedUp)
-        {
-            speed += speedUp;
         }
         
         private void FireRight()
@@ -128,6 +118,26 @@ namespace Completed
         	GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity) as GameObject;
         	bullet.GetComponent<Rigidbody2D>().velocity = transform.up * -1 * bulletSpeed;
 		    Destroy(bullet, 1f);
+        }
+		
+		// ==================================================== public Methods ====================================================
+		public void UseSpeed(float speedUp)
+        {
+            speedUpgraded += speedUp;
+        }
+		
+		public void UseShield()
+        {
+            shieldActive = true;
+            shield.SetActive(true);
+            UnityEngine.Debug.Log("Shield activated");
+            Invoke("DeactivateShield", 10.0f);
+        }
+		
+		public void DropUpgrades()
+        {
+            speedUpgraded = speedOriginal;
+			DeactivateShield();
         }
     }
 }

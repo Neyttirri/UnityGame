@@ -333,7 +333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gm: {fileID: 0}
-  speed: 5
+  speedOriginal: 4
   shield: {fileID: 3936535029407742497}
   bulletPrefab: {fileID: 3351464572226115269, guid: 450b52436a339b340821b2354c343ab7,
     type: 3}

@@ -47,11 +47,15 @@ MonoBehaviour:
   boardScript: {fileID: 0}
   coinsText: {fileID: 0}
   levelText: {fileID: 0}
+  timerText: {fileID: 0}
+  bestTimeText: {fileID: 0}
+  currentTimeText: {fileID: 0}
   panelMenu: {fileID: 0}
   panelPlay: {fileID: 0}
   panelUpgrade: {fileID: 0}
   panelGameOver: {fileID: 0}
   panelLevelCompleted: {fileID: 0}
+  panelVictory: {fileID: 0}
   healthbarImage: {fileID: 0}
   healthbarImages:
   - {fileID: 21300000, guid: 35d199c5b33e04b64b9d4644d9c7e774, type: 3}
@@ -86,8 +90,6 @@ MonoBehaviour:
   bossPrefab: {fileID: 7086194480044866506, guid: 02a58cba0ed284fe887ebf9d16168756,
     type: 3}
   exitTile: {fileID: 812039726131869351, guid: caa1ba3c9f472b3449178098921a9590, type: 3}
-  particleEffects: {fileID: 9173561966426148840, guid: 0c89b062e102cb348b0ee6c96da9bc11,
-    type: 3}
   waterTile: {fileID: 6261557427309798708, guid: f4bf8b2f401823449a9ec21e85a1c27a,
     type: 3}
   innerWallTiles:

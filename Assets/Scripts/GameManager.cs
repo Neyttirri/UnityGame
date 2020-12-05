@@ -27,19 +27,17 @@ namespace Completed
         [SerializeField] private Image healthbarImage;
         [SerializeField] private Sprite[] healthbarImages;
         [SerializeField] private int neededForUpgradeCoins = 10;
-
-        public int bossLevel;
+		[SerializeField] private int bossLevel;
         
         private GameObject pauseGameText;
 		private GameObject newHighscoreText;
         
         public static GameManager Instance { get; private set; }
         public enum State { MENU, INIT, PLAY, LEVELCOMPLETED, LOADLEVEL, UPGRADE, GAMEOVER, VICTORY }
-        private readonly int MAX_LEVELS = 6;
-    
+        
         private State _state;
         private bool _isSwitchingState;
-		private float time;
+		private float elapsedTime;
 		private float startTime; 
 		private float bestTime = 0;
 
@@ -72,9 +70,7 @@ namespace Completed
             }
         }
         
-         
-
-        public void PlayClicked()
+		public void PlayClicked()
         {
             SwitchState(State.INIT);
         }
@@ -88,27 +84,23 @@ namespace Completed
         public void ButtonFasterClicked()
         {
             Debug.Log("faster chosen");
-			boardScript.playerPrefab.GetComponent<PlayerController>().useSpeed(1);
+			boardScript.UpgradePlayerSpeed();
             SwitchState(State.PLAY);
         }
 
         public void ButtonShieldClicked()
         {
             Debug.Log("shield chosen");
-            // code for (color) shield for player
-            
-            boardScript.GetPlayerController().useShield();
-            // TODO: still include timeout or whatever
+            boardScript.UpgradePlayerShield();
             SwitchState(State.PLAY);
         }
 
         void Awake()
         {
             boardScript = GetComponent<BoardManager>();
-            boardScript.maxLevels = MAX_LEVELS;
+            boardScript.SetMaxLevels(bossLevel);
             Instance = this;
             DontDestroyOnLoad(gameObject);  // needed?
-                                            // InitGame(); -> do it in the play state 
             SwitchState(State.MENU);
         }
         
@@ -118,18 +110,11 @@ namespace Completed
             pauseGameText.SetActive(false);
 			newHighscoreText = panelVictory.transform.GetChild(0).gameObject.transform.GetChild(4).gameObject;
 			newHighscoreText.SetActive(false);
-            // Instance = this;
-            // SwitchState(State.MENU);
         }
 
         void InitGame()
         {
-            if (level == bossLevel)
-            {
-                boardScript.SetupBossScene();
-            } else {
-                boardScript.SetupScene(level);
-            }
+            boardScript.SetupScene(level);
         }
 
         void Update()
@@ -141,8 +126,8 @@ namespace Completed
                 case State.INIT:
                     break;
                 case State.PLAY:
-                	time = Time.time - startTime;
-                	timerText.text = "TIME: " + (int)(time / 60) + ":" + (int)(time % 60); 
+                	elapsedTime = Time.time - startTime;
+                	timerText.text = "TIME: " + (int)(elapsedTime / 60) + ":" + (int)(elapsedTime % 60); 
                     if (Input.GetKeyDown(KeyCode.Space))
        				{
             			if(Time.timeScale == 0)
@@ -201,54 +186,53 @@ namespace Completed
                     panelMenu.SetActive(true);
                     break;
                 case State.INIT:
-                    Coin = 0;
+				    Coin = 0;
                     Lifes = 5;
                     Level = 1;
                     startTime = Time.time; 
                     timerText.text = "TIME: 0:0";
-                    Cursor.visible = false;
+					Cursor.visible = false;
                     panelPlay.SetActive(true);
                     healthbarImage.sprite = healthbarImages[Lifes] as Sprite;	// überflüssig?
                 	ResumeGame();
                     SwitchState(State.LOADLEVEL);
                     break;
                 case State.PLAY:
-                	time += Time.deltaTime;
+                	elapsedTime += Time.deltaTime;
                     panelPlay.SetActive(true);
 					break;
                 case State.LEVELCOMPLETED:
-                    //exitReached = false;
                     Level++;
                     panelLevelCompleted.SetActive(true);
                     SwitchState(State.LOADLEVEL);
                     break;
                 case State.LOADLEVEL:
-                    // do other stuff
-                    InitGame(); // set up board 		// consider: if player is every time instantiated, is there any info that should be kept with him
+                    InitGame(); // set up board 		
                     SwitchState(State.PLAY, 2f);
                     break;
                 case State.UPGRADE:
-                    PauseGame();    // test it tho... 
+                    PauseGame();    
                     Cursor.visible = true;
                     panelUpgrade.SetActive(true);
                     break;
                 case State.GAMEOVER:
                 	PauseGame();
                     Level = 1;
-                    // drop all the updates
                     Coin = 0;
                     Lifes = 6;
-                    time = 0;
+                    elapsedTime = 0;
+					boardScript.DropAllPlayerUpgrades();		// make sure when starting the game (also next times), all the upgrades for the player are gone
                     Cursor.visible = true;
                     panelGameOver.SetActive(true);
                     break;
                 case State.VICTORY:
                 	panelVictory.SetActive(true);
 					bestTimeText.text = "Best time: " + (int)(bestTime / 60) + ":" + (int)(bestTime % 60); 
-					currentTimeText.text = "TIME: " + (int)(time / 60) + ":" + (int)(time % 60); 
-					if( time > bestTime)
+					currentTimeText.text = "TIME: " + (int)(elapsedTime / 60) + ":" + (int)(elapsedTime % 60); 
+					if( elapsedTime > bestTime)
 						newHighscoreText.SetActive(true);
                 	Cursor.visible = true;
+					boardScript.DropAllPlayerUpgrades();		// make sure when starting the game (also next times), all the upgrades for the player are gone
                     break;   
             }
         }
@@ -273,10 +257,8 @@ namespace Completed
                 case State.UPGRADE:
                     Coin = 0;
                     panelUpgrade.SetActive(false);
-                    //panelPlay.SetActive(true);
                     Cursor.visible = false;
-
-                    ResumeGame();   // test it tho... 
+					ResumeGame();   
                     break;
                 case State.GAMEOVER:
                     panelGameOver.SetActive(false);
@@ -294,7 +276,7 @@ namespace Completed
 
         public void SetExitActive()
         {
-			boardScript.exitTile.SetActive(true);
+			boardScript.SetExitActive();
         }
         
         public int GetAmountCoinsForUpgrade()
@@ -348,5 +330,4 @@ namespace Completed
             Time.timeScale = 1;
         }
     }
-
 }
