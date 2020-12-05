@@ -16,7 +16,7 @@ namespace Completed
         public Text timerText;
 		public Text bestTimeText;
 		public Text currentTimeText;
-
+		
         public GameObject panelMenu;
         public GameObject panelPlay;
         public GameObject panelUpgrade;
@@ -31,6 +31,8 @@ namespace Completed
         
         private GameObject pauseGameText;
 		private GameObject newHighscoreText;
+		private GameObject fasterButton;
+        private GameObject maxSpeedReachedText;
         
         public static GameManager Instance { get; private set; }
         public enum State { MENU, INIT, PLAY, LEVELCOMPLETED, LOADLEVEL, UPGRADE, GAMEOVER, VICTORY }
@@ -40,7 +42,7 @@ namespace Completed
 		private float elapsedTime;
 		private float startTime; 
 		private float bestTime = 0;
-
+		
         private int _coins;
         public int Coin
         {
@@ -108,6 +110,9 @@ namespace Completed
         {
             pauseGameText = panelPlay.transform.GetChild(4).gameObject;
             pauseGameText.SetActive(false);
+			maxSpeedReachedText = panelUpgrade.transform.GetChild(4).gameObject;
+			maxSpeedReachedText.SetActive(false);
+			fasterButton = panelUpgrade.transform.GetChild(2).gameObject;
 			newHighscoreText = panelVictory.transform.GetChild(0).gameObject.transform.GetChild(4).gameObject;
 			newHighscoreText.SetActive(false);
         }
@@ -261,13 +266,13 @@ namespace Completed
 					ResumeGame();   
                     break;
                 case State.GAMEOVER:
-                	boardScript.DropAllPlayerUpgrades();		// make sure when starting the game (also next times), all the upgrades for the player are gone
+                	RemoveUpgardes();
                 	Debug.Log("Upgrades deactivated after game over");
                     panelGameOver.SetActive(false);
                     break;
                 case State.VICTORY:
                 	panelVictory.SetActive(false);
-                	boardScript.DropAllPlayerUpgrades();		// make sure when starting the game (also next times), all the upgrades for the player are gone
+                	RemoveUpgardes();
                 	if( elapsedTime > bestTime)
 					{
 						Debug.Log("clearing up time and highscore..");
@@ -319,6 +324,12 @@ namespace Completed
 			SwitchState(State.LEVELCOMPLETED);
 		}
 		
+		public void MaxSpeedReached()
+		{
+			fasterButton.SetActive(false);
+			maxSpeedReachedText.SetActive(true);
+		}
+		
 		public void RevealNemo()
         {
 			boardScript.CreateNemo();
@@ -338,5 +349,12 @@ namespace Completed
         {
             Time.timeScale = 1;
         }
+		
+		private void RemoveUpgardes()
+		{
+			boardScript.DropAllPlayerUpgrades();		// make sure when starting the game (also next times), all the upgrades for the player are gone
+			fasterButton.SetActive(true);
+			maxSpeedReachedText.SetActive(false);
+		}
     }
 }

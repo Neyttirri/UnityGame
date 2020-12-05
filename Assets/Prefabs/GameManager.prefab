@@ -78,15 +78,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4e2a08d02497ff4d8be470d601e59e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  columns: 32
-  rows: 32
+  columns: 16
+  rows: 16
   playerPrefab: {fileID: 8696869040990042473, guid: 85b65c1ac4177e14794b2c2f7a85a2b5,
     type: 3}
   nemoPrefab: {fileID: 6958387339247279279, guid: 7a15c759516a7204da90030086bc5582,
     type: 3}
   bossPrefab: {fileID: 7086194480044866506, guid: 02a58cba0ed284fe887ebf9d16168756,
     type: 3}
-  exitTile: {fileID: 812039726131869351, guid: caa1ba3c9f472b3449178098921a9590, type: 3}
+  exitPrefab: {fileID: 812039726131869351, guid: caa1ba3c9f472b3449178098921a9590,
+    type: 3}
   waterTile: {fileID: 6261557427309798708, guid: f4bf8b2f401823449a9ec21e85a1c27a,
     type: 3}
   innerWallTiles:

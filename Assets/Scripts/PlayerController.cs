@@ -10,6 +10,7 @@ namespace Completed
 
         public GameManager gm;
         public float speedOriginal;
+		public float speedMax;
         private Rigidbody2D _rigidBody;
         [SerializeField] private GameObject shield;
 		[SerializeField] private GameObject bulletPrefab;
@@ -62,12 +63,7 @@ namespace Completed
 
         private void OnCollisionEnter2D(Collision2D col)
         {
-            if (col.gameObject.CompareTag("Enemy") && !shieldActive)
-            {
-                StartCoroutine(Attacked());
-                gm.LostLife();
-            }
-            if (col.gameObject.CompareTag("Boss") && !shieldActive)
+            if ((col.gameObject.CompareTag("Enemy") || col.gameObject.CompareTag("Boss")) && !shieldActive)
             {
                 StartCoroutine(Attacked());
                 gm.LostLife();
@@ -128,6 +124,8 @@ namespace Completed
 		public void UseSpeed(float speedUp)
         {
             speedUpgraded += speedUp;
+			if(speedUpgraded >= speedMax)
+				gm.MaxSpeedReached();
         }
 		
 		public void UseShield()
