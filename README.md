@@ -35,7 +35,8 @@ Finding Nemo is a free open source rogue-like 2D game made with Unity
  
  * -> basically the ones you need to install Unity 2019 
 
-## Contribute (how people can contribute to the project)
+## Contribute 
+ * drop a message at s0564815@htw-berlin.de for example!  
 
 ## Credits and Sources 
 Some of the sources of inspiration are:
