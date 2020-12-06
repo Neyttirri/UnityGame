@@ -37,6 +37,13 @@ Finding Nemo is a free open source rogue-like 2D game made with Unity
 
 ## Contribute 
  * drop a message at s0564815@htw-berlin.de for example!  
+ 
+## Screenshots 
+![Bildschirmfoto 2020-12-06 um 19 53 04](https://user-images.githubusercontent.com/46076398/101289513-3af01c00-37fd-11eb-85b4-f5380d164c92.png)
+![Bildschirmfoto 2020-12-06 um 19 54 05](https://user-images.githubusercontent.com/46076398/101289578-a803b180-37fd-11eb-8536-71a8a3572dc8.png)
+![Bildschirmfoto 2020-12-06 um 20 06 55](https://user-images.githubusercontent.com/46076398/101289751-af778a80-37fe-11eb-9dc5-da19b71fb0c5.png)
+
+
 
 ## Credits and Sources 
 Some of the sources of inspiration are:
