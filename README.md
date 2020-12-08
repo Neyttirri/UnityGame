@@ -52,4 +52,4 @@ Some of the sources of inspiration are:
 * https://www.youtube.com/watch?v=qAf9axsyijY
 * https://www.youtube.com/watch?v=9Ly7NHL0v6w&list=PLosGp2abdYXSafraOainLlvmMRfFy5H5A&index=3
 * https://github.com/c00pala/Unity-2D-Maze-Generator
-* looking at free Assets in the Unity Store :)  
+* looking at free Assets in the Unity Store :blush:
